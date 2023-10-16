@@ -23,3 +23,11 @@ conan list '*:*#*'
 conan install --requires=boost/1.82.0 --build='boost/*' || echo "!!! (rc=$?) Build should have succeeded, but it failed"
 conan list '*:*#*'
 
+# Remove offending CCI package
+conan remove -c 'b2/*:*#a31a98f757dcf4d3f03ed629ccde26b7'
+conan list '*:*#*'
+
+# Force-build boost once again -- Conan resolves b2 to the only available local package
+conan install --requires=boost/1.82.0 --build='boost/*'
+conan list '*:*#*'
+
