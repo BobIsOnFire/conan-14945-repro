@@ -19,7 +19,7 @@ conan list '*:*#*'
 conan install --requires=boost/1.82.0 --build=missing --build='b2/*'
 conan list '*:*#*'
 
-# Try different build_type -- get the same error as in first run (as if our version of b2 doesn't exist)
-conan install --requires=boost/1.82.0 -s build_type=Debug --build=missing || echo "!!! (rc=$?) Build should have succeeded, but it failed"
+# Force-build boost -- get the same error as in first run (as if our version of b2 doesn't exist)
+conan install --requires=boost/1.82.0 --build='boost/*' || echo "!!! (rc=$?) Build should have succeeded, but it failed"
 conan list '*:*#*'
 
